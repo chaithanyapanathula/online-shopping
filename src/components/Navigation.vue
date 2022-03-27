@@ -1,14 +1,15 @@
 <template>
   <div>
-    <div class="header">
-      <img src="logo.png" />
+    <div class="header" style="padding-left:20px;"> 
+      <img src="logo.png" class="rotate"  />
       <h1>Power Oil & Lubricants</h1>
-      <h4><pre>        Power Up Your Vehicles</pre></h4>
+      <p><span class="words"></span><span class="accessibility"></span></p>
+    
     </div>
     <br />
     <header>
       <div class="container_top">
-        <h1 class="logo"></h1>
+       
 
         <nav>
           <ul>
@@ -35,10 +36,12 @@
 export default {
   name: "TheNavigation",
 };
+
 </script>
 
 
 <style  scoped>
+
 .container_top {
   width: 80%;
   margin: 0px;
@@ -46,6 +49,7 @@ export default {
 
 header {
   background: grey;
+  animation-iteration-count: 2;
 }
 
 header::after {
@@ -117,4 +121,50 @@ h1 {
   top: 18px;
   left: 10px;
 }
+.rotate {
+  animation: rotation 8s infinite linear;
+}
+
+@keyframes rotation {
+  from {
+    transform: rotate(45deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}
+@keyframes words {
+  0% {content: "Power";}
+  30% {content: "Power Up ";}
+  50% {content: "Your";}
+  75% {content: "Vehicles";}
+  
+}
+@keyframes cursor {
+  0% {content: "";}
+  50% {content: "|";}
+  100% {content: "";}
+}
+.words::before {
+  animation: words 2s linear 0s 1 normal forwards;
+  content: "";
+}
+
+.words::after {
+  animation: cursor 0.6s linear 2.2s 1 normal forwards, cursor 0.6s linear 4s 3 normal forwards;
+  content: "|";
+}
+.accessibility {
+  width: 0; 
+  display: inline-block; 
+  overflow: hidden; 
+  white-space:nowrap;
+}
+
+@media screen and (min-width: 400px) {
+  .container_top {
+    background-color: lightgreen;
+  }
+}
+ 
 </style>

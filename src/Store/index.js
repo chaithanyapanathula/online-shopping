@@ -4,7 +4,7 @@ const store={
     state:{
        
             products: [],
-            product: {},
+            Login: {},
             cart: []
           
     },
@@ -13,8 +13,8 @@ const store={
             return state.products
         },
         
-       product (state) {
-            return state.product
+       Login (state) {
+            return state.Login
         },
         
          cart (state) {
@@ -27,7 +27,7 @@ const store={
             state.products = val
         },
         
-        setProduct(state, val) {
+        setLogin(state, val) {
             state.product = val
         },
         
@@ -48,19 +48,19 @@ const store={
        
 
 getProducts({ commit }) {
-    let url = "http://localhost:8081/product/products";
+    let url = "http://localhost:8080/product/products";
     Vue.axios.get(url).then((response) => {
-        commit("setProducts", response.data);
-        console.log(response.data);
+        commit("setProducts", response.data.data);
+        console.log(response.data.data);
     }).catch(error => {
         console.log(error);
     });
 },
 
- productDetails({ commit }, id) {
-    let url = "https://my-json-server.typicode.com/Nelzio/ecommerce-fake-json/products";
-    Vue.axios.get(url, { params: { id: id } }).then((response) => {
-        commit("setProduct", response.data[0]);
+ loginDetails({ commit }, username,password) {
+    let url = "http://10.20.2.213:8083/api/auth/signin";
+    Vue.axios.get(url, { params: { username,password } }).then((response) => {
+        commit("setLogin", response.data);
     }).catch(function (error) {
         console.log(error);
     });

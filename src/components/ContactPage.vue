@@ -2,13 +2,14 @@
   <div>
   <div><h1></h1></div>
     <div class="container" style="text-align: left">
-      <form action="action_page.php">
+      <form action="action_page.php" @submit="Submit" >
         <label for="fname"> Name</label>
         <input
           type="text"
           id="fname"
           name="firstname"
           placeholder="Your name.."
+          v-model="posts.name"
         />
 
         <label for="lname">Email Id</label>
@@ -17,10 +18,11 @@
           id="lname"
           name="lastname"
           placeholder="Your email id.."
+          v-model="posts.email"
         />
 
         <label for="country">Country</label>
-        <select id="country" name="country">
+        <select id="country" name="country" v-model="posts.country">
           <option value="india">India</option>
           <option value="canada">Canada</option>
           <option value="usa">USA</option>
@@ -32,6 +34,7 @@
           name="subject"
           placeholder="Write something.."
           style="height: 200px"
+          v-model="posts.subject"
         ></textarea>
 
         <input type="submit" value="Submit" />
@@ -41,8 +44,27 @@
 </template>
 
 <script>
+import axios from 'axios'
 export default {
   name: "ContactPage",
+  data(){
+    return {
+      posts:{
+     name: null,
+      country: null,
+      email:null,
+      subject: null,
+    }
+    };
+  },
+  methods:{
+    Submit(e){
+      axios.post("http://localhost:8081/signup/contact",this.posts)
+      .then((result) => console.warn(result))  
+         e.preventDefault();
+
+    }
+  }
 };
 </script>
 

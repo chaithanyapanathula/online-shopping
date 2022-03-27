@@ -5,19 +5,14 @@
         <div
           class="ProductDetails"
           v-for="product in products"
-          :key="product.id"
+          :key="product.productid"
         >
           <img :src="product.imgurl" class="product-image" />
           <div class="productname">Name:{{ product.name }}</div>
           <div class="productrate">Rating:{{ product.rating }}</div>
           <div class="productprice">Price:{{ product.price }}</div>
           <div class="row">
-            <router-link
-              tag="button"
-              class="cartButton"
-              :to="'/details/' + product.id"
-              >DETAILS</router-link
-            >
+            <button class="" @click="handleProductClick(product.productid)"> Details</button>
           </div>
         </div>
       </div>
@@ -43,6 +38,13 @@ export default {
     fetchPosts() {
       this.getProducts();
     },
+    handleProductClick(postId){
+
+this.$router.push(`DetailsComponent/${postId}`)
+
+console.log(postId)
+
+}
   },
 };
 </script>
@@ -54,14 +56,17 @@ export default {
 
   justify-content: center;
   gap: 20px;
+  
 }
 .ProductDetails {
   background-color: lavenderblush;
   text-align: center;
+
+  
 }
-.product-image {
-  max-height: 300px;
-  max-width: 300px;
+img {
+  height: 250px;
+  width: 250px;
 }
 .cartButton {
   background-color: lavender;

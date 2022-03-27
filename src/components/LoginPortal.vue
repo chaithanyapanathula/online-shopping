@@ -1,10 +1,10 @@
 <template>
   <div class="Profile">
     <div class="userprofile">
-      <router-link :to="{ name: 'UserLogin' }"
+      <router-link class="routerLink" :to="{ name: 'UserLogin' }"
         ><div>
           <img
-            src="./images/userimage.png"
+            src="https://www.kindpng.com/picc/m/235-2350682_new-svg-image-small-user-login-icon-hd.png"
             alt="USER"
             style="width: 300px; height: 300px"
           />
@@ -15,10 +15,10 @@
       >
     </div>
     <div class="userprofile">
-      <router-link :to="{ name: 'Sellerlogin' }"
+      <router-link class="routerLink" :to="{ name: 'SellerLogin' }"
         ><div>
           <img
-            src="./images/seller.webp"
+            src="https://www.freeiconspng.com/thumbs/seller-icon/seller-icon-13.png"
             alt="SELLER"
             style="width: 300px; height: 300px"
           />
@@ -68,4 +68,7 @@ img {
 .container {
   padding: 2px 16px;
 }
+.routerLink{
+     text-decoration: none;
+ }
 </style>

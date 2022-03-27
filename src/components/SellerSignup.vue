@@ -1,48 +1,70 @@
 <template>
 <div class="signup">
  <div class="signupfrm">
-    <form action="" class="form">
+    <form @submit="postdata" action="post" class="form">
       <h1 class="title">SELLER SIGN UP</h1>
 
       <div class="inputContainer">
-        <input type="text" class="input" placeholder="a">
+        <input type="text"  name="email" class="input" placeholder="a" v-model="posts.email">
         <label for="" class="label">Email</label>
       </div>
 
       <div class="inputContainer">
-        <input type="text" class="input" placeholder="a">
+        <input type="text" name="Username" class="input" placeholder="a" v-model="posts.name" >
         <label for="" class="label">Username</label>
       </div>
 
       <div class="inputContainer">
-        <input type="text" class="input" placeholder="a">
+        <input type="password" name="password" class="input" placeholder="a" v-model="posts.password">
         <label for="" class="label">Password</label>
       </div>
 
       <div class="inputContainer">
-        <input type="text" class="input" placeholder="a">
+        <input type="password" class="input" placeholder="a" v-model="posts.confirmpassword">
         <label for="" class="label">Confirm Password</label>
       </div>
-
+      <router-link :to="{name: 'SellerLogin'}">
       <input type="submit" class="submitBtn" value="Sign up">
+      </router-link>
+      
     </form>
   </div>
   </div>
 </template>
 
 <script>
+import axios from "axios";
+
   export default {
-      name:"UserSignup",
+      name:"SellerSignup",
     data() {
       return {
-        Email: "",
-        UserName: "",
-        Password: "",
-        ConfirmPassword: "",
+        // Email: "",
+        // UserName: "",
+        // Password: "",
+        // ConfirmPassword: "",
+
+        posts:{
+         email:null,
+         Username:null,
+         password:null,
+         confirmPassword:null
+         
+       
+     }
+ }
+ },
+ methods:{
+     postdata(e)
+     {  
+         axios.post("http://10.20.2.213:8077/merchant/merchantsignup",this.posts)
+         .then((result) => console.warn(result))  
+         e.preventDefault();
+     }
+ }
+}
         
-      };
-    },
-  }
+     
    
 </script>
 
@@ -117,7 +139,7 @@ padding: 0;
   margin-left: auto;
   padding: 15px 30px;
   border: none;
-  background-color: purple;
+  background-color: #555;
   color: white;
   border-radius: 6px;
   cursor: pointer;
@@ -126,7 +148,7 @@ padding: 0;
 }
 
 .submitBtn:hover {
-  background-color: #9867C5;
+  background-color: #555;
   transform: translateY(-2px);
 }
 .input:focus + .label {
@@ -135,7 +157,7 @@ padding: 0;
   z-index: 10;
   font-size: 14px;
   font-weight: 600;
-  color: purple;
+  color: #555;
 }
 </style>
   

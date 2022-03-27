@@ -5,34 +5,56 @@
         <h1 class="title">USER LOGIN</h1>
 
         <div class="inputContainer">
-          <input type="text" class="input" placeholder="a" />
-          <label for="" class="label">Username</label>
+          <input type="text" class="input" placeholder="a" v-model="username" />
+          <label for="" class="label">username</label>
         </div>
 
         <div class="inputContainer">
-          <input type="text" class="input" placeholder="a" />
+          <input type="password" class="input" placeholder="a" v-model="password" />
           <label for="" class="label">Password</label>
         </div>
         <router-link :to="{ name: 'UserSignup' }"
           ><input type="submit" class="signupbutton" value="SIGNUP"
         /></router-link>
-        <input type="submit" class="submitBtn" value="LOGIN" />
+        <router-link :to="{ name: 'ProductComponent' }">
+
+        <input type="submit" class="submitBtn" @click="handleSubmit" value="LOGIN" />
+        </router-link>
       </form>
     </div>
   </div>
 </template>
-
+ 
 <script>
+import axios from 'axios'
 export default {
-  name: "UserSignup",
+  name: "UserLogin",
   data() {
     return {
-      Email: "",
-      UserName: "",
-      Password: "",
-      ConfirmPassword: "",
+     username: "",
+      // UserName: "",
+      password: "",
+      
     };
   },
+  methods:{
+    // UserLogin(){
+    //   alert("You Have Successfully Logged In ....");
+  
+
+    // },
+   async handleSubmit()
+
+  {
+     const response=await axios.post('http://localhost:8081/signin/',{
+      username:this.username,
+      password:this.password,
+    })
+    localStorage.setItem('accessToken',response.data.accessToken);
+    
+  }
+
+  }
 };
 </script>
 
@@ -106,7 +128,7 @@ export default {
   margin-left: auto;
   padding: 15px 30px;
   border: none;
-  background-color: purple;
+  background-color: blac;
   color: white;
   border-radius: 6px;
   cursor: pointer;
@@ -115,7 +137,7 @@ export default {
 }
 
 .submitBtn:hover {
-  background-color: #9867c5;
+  background-color: #555;
   transform: translateY(-2px);
 }
 .input:focus + .label {
@@ -124,14 +146,14 @@ export default {
   z-index: 10;
   font-size: 14px;
   font-weight: 600;
-  color: purple;
+  color: #555;
 }
 .signupbutton {
   display: block;
   margin-right: auto;
   padding: 15px 30px;
   border: none;
-  background-color: purple;
+  background-color: #555;
   color: white;
   border-radius: 6px;
   cursor: pointer;
@@ -140,7 +162,7 @@ export default {
 }
 
 .signupbutton:hover {
-  background-color: #9867c5;
+  background-color:  #555;
   transform: translateY(-2px);
 }
 </style>

@@ -67,9 +67,19 @@
 
 <script>
 import SliderShow from "./SliderShow.vue";
-
+import axios from 'axios'
 export default {
   name: "HomePage",
+   async created()
+  {
+     const response=await axios.get('http://localhost:8083/api/auth/signin',{
+       headers:{
+          Authorization:'Bearer'+localStorage.getItem('token')
+       },
+        
+     })
+     console.log(response)
+  },
   components: {
     SliderShow,
   },

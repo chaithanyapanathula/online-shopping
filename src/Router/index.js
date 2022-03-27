@@ -7,12 +7,13 @@ import UserLogin from "../components/UserLogin"
 import ContactPage from "../components/ContactPage"
 import CartPage from "../components/CartPage"
 import LoginPortal from "../components/LoginPortal"
-import Sellerlogin from "../components/Sellerlogin"
-import ProductCard from "../components/ProductCard"
+import SellerLogin from "../components/Sellerlogin"
+
 import ProductComponent from "../components/Product"
 import UserSignup from "../components/UserSignup"
 import SellerSignup from "../components/SellerSignup"
 import DetailsComponent from "../components/Details"
+import MerchantComponentPage from "../components/MerchantDetails"
 
 const routes=[
     {
@@ -42,8 +43,8 @@ const routes=[
         path:"/UserLogin"
     },
     {
-        name:"Sellerlogin",
-        component:Sellerlogin,
+        name:"SellerLogin",
+        component:SellerLogin,
         path:"/SellerLogin"
     },
 
@@ -61,18 +62,14 @@ const routes=[
     {
         name:"CartPage",
         component:CartPage,
-        path:"/CartPage"
+        path:"/CartPage/:id"
     },
     {
         name:"ProductComponent",
         component:ProductComponent,
         path:"/ProductComponent"
     },
-    {
-        name:"ProductCard",
-        component:ProductCard,
-        path:"/ProductCard"
-    },
+    
     {
         name:"UserSignup",
         component:UserSignup,
@@ -84,11 +81,15 @@ const routes=[
         path:"/SellerSignup"
     },
     {
-        name:"Details",
+        name:"DetailsComponent",
         component:DetailsComponent,
-        path:"/Details/:id"
-    }
-
+        path:"/DetailsComponent/:id"
+    },
+    {
+        name:"MerchantComponentPage",
+        component:MerchantComponentPage,
+        path:"/MerchantComponentPage"
+    },
 ];
 
 export default routes

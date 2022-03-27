@@ -10,13 +10,16 @@
         </div>
 
         <div class="inputContainer">
-          <input type="text" class="input" placeholder="a" />
+          <input type="password" class="input" placeholder="a" />
           <label for="" class="label">Password</label>
         </div>
         <router-link :to="{ name: 'SellerSignup' }"
           ><input type="submit" class="signupbutton" value="SIGNUP"
         /></router-link>
+        <router-link :to="{ name: 'MerchantComponentPage' } ">
         <input type="submit" class="submitBtn" value="LOGIN" />
+        </router-link>
+        
       </form>
     </div>
   </div>
@@ -104,7 +107,7 @@ export default {
   margin-left: auto;
   padding: 15px 30px;
   border: none;
-  background-color: purple;
+  background-color:  #555;
   color: white;
   border-radius: 6px;
   cursor: pointer;
@@ -113,7 +116,7 @@ export default {
 }
 
 .submitBtn:hover {
-  background-color: #9867c5;
+  background-color: #555;
   transform: translateY(-2px);
 }
 .input:focus + .label {
@@ -122,14 +125,14 @@ export default {
   z-index: 10;
   font-size: 14px;
   font-weight: 600;
-  color: purple;
+  color: #555;
 }
 .signupbutton {
   display: block;
   margin-right: auto;
   padding: 15px 30px;
   border: none;
-  background-color: purple;
+  background-color:  #555;
   color: white;
   border-radius: 6px;
   cursor: pointer;
@@ -138,7 +141,7 @@ export default {
 }
 
 .signupbutton:hover {
-  background-color: #9867c5;
+  background-color: #555;
   transform: translateY(-2px);
 }
 </style>

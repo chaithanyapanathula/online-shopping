@@ -110,7 +110,7 @@ width:100%;
 
 /* On hover, add a black background color with a little bit see-through */
 .prev:hover, .next:hover {
-  background-color: rgba(0,0,0,0.9);
+  background-color: #555;
 }
 .slide{
   min-height: 400px;
